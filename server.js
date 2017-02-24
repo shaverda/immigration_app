@@ -1,0 +1,57 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var db = require("./models");
+
+
+//bunch of stuff for auth0 from https://manage.auth0.com/#/clients/aYQBFES351HrymxuMCJ0vAnog1mDxA0h/quickstart
+var passport = require("passport");
+var Auuth0Strategy = require("passport-auth0");
+var strategy = new Auuth0Strategy({
+    domain: process.env.AUTH0_DOMAIN,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    callbackURL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
+}, (accessToken, refreshToken, extraParams, profile, done) => {
+	return done(null, profile);
+});
+
+passport.use(strategy);
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+//typical port and listen stuff
+var port = process.env.PORT || 3000;
+
+var app = express();
+
+app.use(express.static(process.cwd() + '/public'));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(methodOverride('_method'));
+
+var exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+
+var routes = require('./controllers/routes.js');
+app.use('/', routes);
+
+db.sequelize.sync().then(function() {
+            app.listen(port, function() {
+                console.log("App listening on PORT " + port);
+            });
