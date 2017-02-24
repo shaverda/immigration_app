@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	var user = sequelize.define('User', {
+	var User = sequelize.define('User', {
 		name: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -18,6 +18,15 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			defaultValue: 'immigrant',
 		}
-	});
-	return user;
+	},
+	{
+      	classMethods: {
+        	associate: function(models) {
+                User.hasOne(models.Survey, {
+            		onDelete: "cascade"
+          		});
+        	}
+      	}
+    });
+	return User;
 };
