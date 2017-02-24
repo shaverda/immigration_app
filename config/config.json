@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "b859a1c0676c7b",
-    "password": "437de561",
-    "database": "heroku_38a32083726ebc1",
-    "host": "us-cdbr-iron-east-04.cleardb.net",
+    "username": "root",
+    "password": "",
+    "database": "immigration_db",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
