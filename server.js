@@ -1,57 +1,37 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+// *****************************************************************************
+// Server.js - This file is the initial starting point for the Node/Express server.
+//
+// ******************************************************************************
+// *** Dependencies
+// =============================================================
+var express = require("express");
+var bodyParser = require("body-parser");
+
+// Sets up the Express App
+// =============================================================
+var app = express();
+var PORT = process.env.PORT || 8080;
+
+// Requiring our models for syncing
 var db = require("./models");
 
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-//bunch of stuff for auth0 from https://manage.auth0.com/#/clients/aYQBFES351HrymxuMCJ0vAnog1mDxA0h/quickstart
-var passport = require("passport");
-var Auuth0Strategy = require("passport-auth0");
-var strategy = new Auuth0Strategy({
-    domain: process.env.AUTH0_DOMAIN,
-    clientID: process.env.AUTH0_CLIENT_ID,
-    clientSecret: process.env.AUTH0_CLIENT_SECRET,
-    callbackURL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
-}, (accessToken, refreshToken, extraParams, profile, done) => {
-	return done(null, profile);
+// Static directory
+app.use(express.static("./public"));
+
+// Routes =============================================================
+
+require("./routes/html-routes.js")(app);
+// require("./routes/api-routes.js")(app);
+
+// Syncing our sequelize models and then starting our express app
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
-
-passport.use(strategy);
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-
-//typical port and listen stuff
-var port = process.env.PORT || 3000;
-
-var app = express();
-
-app.use(express.static(process.cwd() + '/public'));
-
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use(methodOverride('_method'));
-
-var exphbs = require('express-handlebars');
-
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-
-
-var routes = require('./controllers/routes.js');
-app.use('/', routes);
-
-db.sequelize.sync().then(function() {
-            app.listen(port, function() {
-                console.log("App listening on PORT " + port);
-            });
