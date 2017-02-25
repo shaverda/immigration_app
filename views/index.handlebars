@@ -1,13 +1,21 @@
+<div class = 'container'>
+	<div class = 'row'>
+		<div class = 'col-12-md'>
+			<ul>
+				{{#each survey}}
+				<li>{{id}}</li>
+				<li>{{surveyName}}</li>
+				<li>{{question1}}</li>
+				</br>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+</div>
 
+<script src="js/index.js" type="text/javascript"></script>
 
-
-
-
-
-
- //<script src="https://cdn.auth0.com/js/lock/10.9.1/lock.min.js"></script>
-
+//<script src="https://cdn.auth0.com/js/lock/10.9.1/lock.min.js"></script>
 //<script src="https://cdn.auth0.com/w2/auth0-7.6.1.min.js"></script>
-
 //later need to have these two CDN links in here
 //as well as link to css, can use css-handlebar-helper thing

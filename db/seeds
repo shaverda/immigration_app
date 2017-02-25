@@ -1,0 +1,19 @@
+INSERT INTO `immigration_db`.`users` (`id`, `name`, `password`, `userType`, `createdAt`, `updatedAt`) VALUES ('1', 'will', '123', 'lawyer', '11:11:12', '11:11:12');
+INSERT INTO `immigration_db`.`users` (`id`, `name`, `password`, `userType`, `createdAt`, `updatedAt`) VALUES ('2', 'jill', '123', 'user', '11:11:12', '11:11:12');
+INSERT INTO `immigration_db`.`users` (`id`, `name`, `password`, `userType`, `createdAt`, `updatedAt`) VALUES ('3', 'bill', '123', 'user', '11:11:13', '11:11:13');
+INSERT INTO `immigration_db`.`users` (`id`, `name`, `password`, `userType`, `createdAt`, `updatedAt`) VALUES ('4', 'phill', '123', 'user', '11:11:15', '11:11:14');
+INSERT INTO `immigration_db`.`users` (`id`, `name`, `password`, `userType`, `createdAt`, `updatedAt`) VALUES ('5', 'lill', '123', 'lawyer', '11:11:14', '11:11:15');
+
+
+INSERT INTO `immigration_db`.`surveys` (`id`, `surveyName`, `question1`, `question2`, `question3`, `createdAt`, `updatedAt`, `UserId`) VALUES ('1', 'one', '1', '2', '3', '11:11:11', '11:11:11', '2');
+INSERT INTO `immigration_db`.`surveys` (`id`, `surveyName`, `question1`, `question2`, `question3`, `createdAt`, `updatedAt`, `UserId`) VALUES ('2', 'two', '1', '2', '3', '11:11:11', '11:11:11', '2');
+
+INSERT INTO `immigration_db`.`surveys` (`id`, `surveyName`, `question1`, `question2`, `question3`, `createdAt`, `updatedAt`, `UserId`) VALUES ('3', 'one', '1', '2', '3', '11:11:11', '11:11:11', '3');
+INSERT INTO `immigration_db`.`surveys` (`id`, `surveyName`, `question1`, `question2`, `question3`, `createdAt`, `updatedAt`, `UserId`) VALUES ('4', 'two', '1', '2', '3', '11:11:11', '11:11:11', '3');
+
+INSERT INTO `immigration_db`.`surveys` (`id`, `surveyName`, `question1`, `question2`, `question3`, `createdAt`, `updatedAt`, `UserId`) VALUES ('5', 'one', '1', '2', '3', '11:11:11', '11:11:11', '4');
+INSERT INTO `immigration_db`.`surveys` (`id`, `surveyName`, `question1`, `question2`, `question3`, `createdAt`, `updatedAt`, `UserId`) VALUES ('6', 'two', '1', '2', '3', '11:11:11', '11:11:11', '4');
+
+INSERT INTO `immigration_db`.`surveys` (`id`, `surveyName`, `question1`, `question2`, `question3`, `createdAt`, `updatedAt`, `UserId`) VALUES ('7', 'one', '1', '2', '3', '11:11:11', '11:11:11', '5');
+INSERT INTO `immigration_db`.`surveys` (`id`, `surveyName`, `question1`, `question2`, `question3`, `createdAt`, `updatedAt`, `UserId`) VALUES ('8', 'two', '1', '2', '', '11:11:11', '11:11:11', '5');
+
