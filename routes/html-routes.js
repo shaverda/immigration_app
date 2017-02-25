@@ -7,30 +7,6 @@
 var path = require("path");
 var exphbs = require("express-handlebars");
 
-var animals = [
-  {
-    animalType: "dog",
-    pet: true,
-    fierceness: 4
-  }, {
-    animalType: "cat",
-    pet: true,
-    fierceness: 10
-  }, {
-    animalType: "giraffe",
-    pet: false,
-    fierceness: 4
-  }, {
-    animalType: "zebra",
-    pet: false,
-    fierceness: 8
-  }, {
-    animalType: "lion",
-    pet: false,
-    fierceness: 10
-  }
-];
-
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -44,7 +20,7 @@ module.exports = function(app) {
     res.render('login');
   });
 
-  //lawyers are sent to an index of filled out forms
+  //lawyers are sent to an list of surveys filled out forms
   app.get("/surveyList", function(req, res) {
     res.render('surveyList');
   });
@@ -58,5 +34,4 @@ module.exports = function(app) {
   app.get("/document", function(req, res){
     res.render('document');
   });
-
 };
