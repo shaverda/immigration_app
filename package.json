@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Shaverda/immigration_app#readme",
   "dependencies": {
+    "auth0-lock": "^10.11.0",
     "body-parser": "^1.16.1",
     "connect-ensure-login": "^0.1.1",
     "express": "^4.14.1",
