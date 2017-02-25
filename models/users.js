@@ -14,6 +14,13 @@ module.exports = function(sequelize, DataTypes) {
 				len: [1]
 			}
 		},
+		email: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				isEmail: true
+			}
+		},
 		userType: {
 			type: DataTypes.STRING,
 			defaultValue: 'immigrant',
