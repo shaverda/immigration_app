@@ -1,7 +1,8 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  app.get("/api/index", function(req, res) {
+	
+  app.get("/api/surveyList", function(req, res) {
     // 1. Add a join to include all of each Author's Posts
     db.Survey.findAll({
       include: [db.User]

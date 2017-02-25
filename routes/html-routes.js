@@ -45,8 +45,8 @@ module.exports = function(app) {
   });
 
   //lawyers are sent to an index of filled out forms
-  app.get("/index", function(req, res) {
-    res.render('index');
+  app.get("/surveyList", function(req, res) {
+    res.render('surveyList');
   });
 
   //users are sent to thier survey
