@@ -1,20 +1,25 @@
-// //// views/login.jade
+    <div id="login" class="row">
+      <h4>You are not logged in</h4>
+      <button type="button" class="btn btn-primary" id="btn-login">Login</button>
+    </div>
 
-// extends layout
+    <div id="logged" class="row" style="display: none;">
+      <h4>You are logged in</h4>
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Profile</h3>
+          <img alt="" id="avatar">
+          <p><strong>Name: </strong> <span id="name"></span></p>
+          <p><strong>Email: </strong> <span id="email"></span></p>
+          <p><strong>Nickname: </strong> <span id="nickname"></span></p>
+          <p><strong>Created At: </strong> <span id="created_at"></span></p>
+          <p><strong>Updated At: </strong> <span id="updated_at"></span></p>
+          <p><strong>Country (added by rule): </strong> <span id="country"></span></p>
+        </div>
+      </div>
+      <button type="button" class="btn btn-default" id="btn-logout">Logout</button>
+    </div>
 
-// block content
 
-//   div(id="root" style="width: 280px; margin: 40px auto; padding: 10px;")
+<script src="js/login.js" type="text/javascript"></script>
 
-//   script.
-//     // Construct an instance of Auth0Lock with your clientId and aut0 domain name
-//     var lock = new Auth0Lock('#{env.AUTH0_CLIENT_ID}', '#{env.AUTH0_DOMAIN}',{ auth: {
-//           redirectUrl: '#{env.AUTH0_CALLBACK_URL}'
-//         , responseType: 'code'
-//         , params: {
-//           scope: 'openid name email picture'
-//         }
-//       }});
-
-//     // Show lock's login widget
-//     lock.show();
