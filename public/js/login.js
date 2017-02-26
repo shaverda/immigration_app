@@ -5,7 +5,7 @@ var AUTH0_CALLBACK_URL = location.href;
 window.addEventListener('load', function() {
     var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
 
-    // // { for if i decide to go with additional sign up fields rather than doing all thru google too!
+    // // { for if i decide to go with additional sign up fields rather than doing all thru google in combo with our own users db!
     //   additionalSignUpFields: [{
     //     name: "user_type",
     //     placeholder: "Enter lawyer or user",
@@ -48,15 +48,15 @@ window.addEventListener('load', function() {
     };
 
     var showUserProfile = function(profile) {
-        document.getElementById('login').style.display = "none";
-        document.getElementById('logged').style.display = "inline-block";
-        document.getElementById('avatar').src = profile.picture;
-        document.getElementById('name').textContent = profile.name;
-        document.getElementById('email').textContent = profile.email;
-        document.getElementById('nickname').textContent = profile.nickname;
-        document.getElementById('created_at').textContent = profile.created_at;
-        document.getElementById('updated_at').textContent = profile.updated_at;
-        document.getElementById('country').textContent = profile.country;
+        // $('#login').style.display = "none";
+        // $('#logged').style.display = "inline-block";
+        // $('#avatar').src = profile.picture;
+        // $('#name').textContent = profile.name;
+        // $('#email').textContent = profile.email;
+        // $('#nickname').textContent = profile.nickname;
+        // $('#created_at').textContent = profile.created_at;
+        // $('#updated_at').textContent = profile.updated_at;
+        // $('#country').textContent = profile.country;
 
         var user_info = ({
                 email: profile.email
@@ -67,23 +67,15 @@ window.addEventListener('load', function() {
             console.log(data);
             if (data.userType == "immigrant") {
                 if (data.completedSurvey == false) {
-                    // $.get("/survey", (data) => {
-                    //     //to do anything here? idk
-                    // })
                     window.location.href = "/survey";
                 } else if (data.completedSurvey == true) {
                     //if they are an immigrant and have completed survey, direct them to documents portal
-
+                    window.location.href = "/document";
                 } else { //if user is a lawyer, directs them to list of surveys
+                    window.location.href = "/surveyList";
                 }
             }
         });
-    };
-
-    var logout = function() {
-        localStorage.removeItem('id_token');
-        localStorage.removeItem('profile');
-        window.location.href = "/";
     };
 
     parseHash();
