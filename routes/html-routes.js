@@ -10,9 +10,6 @@ var exphbs = require("express-handlebars");
 // Routes
 // =============================================================
 module.exports = function(app) {
-  app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-  app.set("view engine", "handlebars");
-
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   //start users at the login page

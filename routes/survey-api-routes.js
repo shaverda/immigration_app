@@ -10,4 +10,14 @@ module.exports = function(app) {
       console.log(response);
     });
   });
+
+   app.post("/user", function(req, res) {
+    db.Users.findAll({
+    	where: {
+    		email: req.body.email
+    	}
+    }).then((data) => {
+    	console.log(data.length);
+    })
+  });
 };

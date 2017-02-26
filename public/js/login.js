@@ -6,6 +6,16 @@ var AUTH0_CALLBACK_URL=location.href;
 window.addEventListener('load', function() {
   var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
 
+  // // { for if i decide to go with additional sign up fields rather than doing all thru google too!
+  //   additionalSignUpFields: [{
+  //     name: "user_type",
+  //     placeholder: "Enter lawyer or user",
+  //     validator: (value) =>  {
+  //       return (value.toLowerCase() === "lawyer" || value.toLowerCase() === "user");
+  //     }
+  //   }]
+  // }
+
   document.getElementById('btn-login').addEventListener('click', function() {
     lock.show();
   });
@@ -48,6 +58,11 @@ window.addEventListener('load', function() {
     document.getElementById('created_at').textContent = profile.created_at;
     document.getElementById('updated_at').textContent = profile.updated_at;
     document.getElementById('country').textContent = profile.country;
+
+    var user_info = ({
+      email: profile.email
+    })
+    $.post("/user", user_info).then();
   };
 
   var logout = function() {

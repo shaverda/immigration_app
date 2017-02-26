@@ -1,24 +1,38 @@
-    <div id="login" class="row">
-      <h4>You are not logged in</h4>
-      <button type="button" class="btn btn-primary" id="btn-login">Login</button>
-    </div>
+<p>What we do: Help connect lawyers and immigrants. </p>
+<p>Why? How? </p>
+<p>1. Users looking for help with confusing green card or U.S. citizenship forms instead fill out our simple survey</p>
+<p>2. Lawyers review and process everything for USCIS.</p>
 
-    <div id="logged" class="row" style="display: none;">
-      <h4>You are logged in</h4>
-      <div class="row">
-        <div class="col-md-12">
-          <h3>Profile</h3>
-          <img alt="" id="avatar">
-          <p><strong>Name: </strong> <span id="name"></span></p>
-          <p><strong>Email: </strong> <span id="email"></span></p>
-          <p><strong>Nickname: </strong> <span id="nickname"></span></p>
-          <p><strong>Created At: </strong> <span id="created_at"></span></p>
-          <p><strong>Updated At: </strong> <span id="updated_at"></span></p>
-          <p><strong>Country (added by rule): </strong> <span id="country"></span></p>
-        </div>
-      </div>
-      <button type="button" class="btn btn-default" id="btn-logout">Logout</button>
+
+<div id="login" class="row">
+  <h4>You are not logged in</h4>
+  <button type="button" class="btn btn-primary" id="btn-login">Login</button>
+</div>
+
+<div id="logged" class="row" style="display: none;">
+  <h4>You are logged in</h4>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Profile</h3>
+      <img alt="" id="avatar">
+      <p><strong>Name: </strong> <span id="name"></span></p>
+      <p><strong>Email: </strong> <span id="email"></span></p>
+      <p><strong>Nickname: </strong> <span id="nickname"></span></p>
+      <p><strong>Created At: </strong> <span id="created_at"></span></p>
+      <p><strong>Updated At: </strong> <span id="updated_at"></span></p>
+      <p><strong>Country (added by rule): </strong> <span id="country"></span></p>
     </div>
+  </div>
+  <button type="button" class="btn btn-default" id="btn-logout">Logout</button>
+
+  <div class="form-group" id="choose_user_type_div" style="display: none;"> //div for choosing user type if none currently selected
+    <label for="choose_user_type">Choose User Type</label>
+    <select class="form-control" id="choose_user_type">
+      <option>Lawyer</option>
+      <option>Immigrant/user</option>
+    
+  </div>
+</div>
 
 
 <script src="js/login.js" type="text/javascript"></script>
