@@ -24,11 +24,11 @@ module.exports = function(sequelize, DataTypes) {
 	{
       	classMethods: {
         	associate: function(models) {
-          		Survey.belongsTo(models.User, {
-            		foreignKey: {
-              			allowNull: false
-            		}
-          		});
+          		// Survey.belongsTo(models.User, {
+            // 		foreignKey: {
+            //   			allowNull: false
+            // 		}
+          		// });
         	}
       	}
     });

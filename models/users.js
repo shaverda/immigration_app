@@ -24,6 +24,10 @@ module.exports = function(sequelize, DataTypes) {
 		userType: {
 			type: DataTypes.STRING,
 			defaultValue: 'immigrant',
+		},
+		completedSurvey: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false
 		}
 	},
 	{

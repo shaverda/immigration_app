@@ -10,6 +10,7 @@ var exphbs = require("express-handlebars");
 // Routes
 // =============================================================
 module.exports = function(app) {
+
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   //start users at the login page
@@ -22,9 +23,9 @@ module.exports = function(app) {
     res.render('surveyList');
   });
 
-  //users are sent to thier survey
-  app.get("/user", function(req, res) {
-    res.render('user');
+  //users are sent to their survey
+  app.get("/survey", function(req, res) {
+    res.render('survey');
   });
 
   //search for documents to help users fill out the survey
