@@ -1,4 +1,8 @@
-$( document ).ready(function() {    //TODO: find out if user insnt logged in, then display:none this logout button if so
+$( document ).ready(function() {   //hides logout button if user is not logged in
+	if (localStorage.getItem('profile') == null) {
+		$( "#btn-logout" ).hide();
+	}
+
 	var logout = function() {
 		localStorage.removeItem('id_token');
 		localStorage.removeItem('profile');

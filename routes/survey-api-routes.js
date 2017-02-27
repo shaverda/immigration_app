@@ -27,7 +27,12 @@ module.exports = function(app) {
             }
             else {  //if data DOES equal null, create user
               console.log("data is null");
-              //TODO: create a user in our DB if not one yet
+              // creates a user in our DB if not one yet, then returns it
+                db.User.create({
+                    email: data.dataValues.email
+                }).then((data) => {
+                    res.json(data.dataValues);
+                })
             }
         })
     });
