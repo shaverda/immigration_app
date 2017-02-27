@@ -23,12 +23,12 @@ module.exports = function(sequelize, DataTypes) {
 
 	{
       	classMethods: {
-        	associate: function(models) {
-          		Survey.belongsTo(models.User, {
-            		foreignKey: {
-              			allowNull: false
-            		}
-          		});
+        	associate: function(models) { //I commented this all out for now cuz it was messin' me up. Sorry ):
+          		// Survey.belongsTo(models.User, {
+            // 		foreignKey: {
+            //   			allowNull: false
+            // 		}
+          		// }); 
         	}
       	}
     });

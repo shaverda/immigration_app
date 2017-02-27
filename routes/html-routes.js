@@ -43,9 +43,9 @@ module.exports = function(app) {
     res.render('surveyList', {});
   });
 
-  //users are sent to thier survey
-  app.get("/user", function(req, res) {
-    res.render('user');
+  //users are sent to their survey
+  app.get("/survey", function(req, res) {
+    res.render('survey');
   });
 
   //search for documents to help users fill out the survey
