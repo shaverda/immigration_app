@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
 	var Survey = sequelize.define('Survey', {
-		surveyName: {
+		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [1, 160]
+				isEmail: true
 			}
 		},
 		question1: {
