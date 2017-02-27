@@ -71,9 +71,9 @@ window.addEventListener('load', function() {
                 } else if (data.completedSurvey == true) {
                     //if they are an immigrant and have completed survey, direct them to documents portal
                     window.location.href = "/document";
-                } else { //if user is a lawyer, directs them to list of surveys
-                    window.location.href = "/surveyList";
                 }
+            } else { //if user is a lawyer, directs them to list of surveys
+                window.location.href = "/surveyList";
             }
         });
     };
