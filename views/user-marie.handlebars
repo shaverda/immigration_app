@@ -1,0 +1,10 @@
+In views/user.jade we simply display the user's nickname and profile picture.
+
+extends layout
+
+block content
+  title
+  img(src=#{"http://www.immigrationhelptoday.com/images/us-immigration-banner-a.jpg" width="600" height="300"})
+  h2 Welcome #{user.nickname}!
+  br
+  a(href='/logout') Logout
