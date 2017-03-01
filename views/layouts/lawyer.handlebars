@@ -13,12 +13,10 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		 <!-- Auth0 lock script -->
   		<script src="https://cdn.auth0.com/js/lock/10.8/lock.min.js"></script>
+  		<script src="js/main.js" type="text/javascript"></script>
 
   		<!-- Setting the right viewport -->
   		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  		<script src="js/main.js" type="text/javascript"></script>
-
-
 
 	</head>
 	<body>
@@ -43,8 +41,7 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/surveyList">List <span class="sr-only">(current)</span></a></li>
-						<li><a href="/survey">Survey</a></li>
+						<li><a href="/surveyList">List</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
@@ -59,11 +56,8 @@
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
-
 		{{{ body }}}
-		
+
 		<button type="button" class="btn btn-default" id="btn-logout">Logout</button>
-
-
 	</body>
 </html>
