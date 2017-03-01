@@ -4,6 +4,7 @@ img{
 	width: 200px;
 	padding: 4px;
 }
+<<<<<<< HEAD
 /* Full height image header */
 .bgimg-1 {
     background-position: center;
@@ -11,6 +12,8 @@ img{
     background-image: url("http://cdn.free-power-point-templates.com/wp-content/uploads/2009/05/244_example.jpg");
     min-height: 100%;
 }
+=======
+>>>>>>> 62893a5488fa9e79aebbfe17ee06ab5cad0a4b2d
 body{
 	background-color: #7FDBFF;
 	background-image: url("https://jcsla.files.wordpress.com/2013/04/faded_flag.gif") 0 0 no repeat;
@@ -19,5 +22,8 @@ p{
 	color: black;
 	font-family: 'Cinzel Decorative';
 	font-size: 16px;
+<<<<<<< HEAD
 	display: inline-block;
+=======
+>>>>>>> 62893a5488fa9e79aebbfe17ee06ab5cad0a4b2d
 }
