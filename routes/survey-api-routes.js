@@ -39,6 +39,15 @@ module.exports = function(app) {
 
     app.post("/survey", (req, res) => {
         console.log(req.body);
+        console.log(req.body['Family/last name:']);
+        //TODO; HAVING DIFFICULTY HERE GETTING TO DELVE INTO OBJECTS
+        //console.log(req.body.'Family/last name:');
+        // db.Survey.create({
+        //     email: localStorage.getItem('profile.email'),
+        //     last_name: 
+        // }).then((data) => {
+            
+        // })
         res.json(req.body);
     })
 };

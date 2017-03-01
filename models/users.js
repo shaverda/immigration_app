@@ -29,15 +29,6 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.BOOLEAN,
 			defaultValue: false
 		}
-	},
-	{
-      	classMethods: {
-        	associate: function(models) {
-                User.hasOne(models.Survey, {
-            		onDelete: "cascade"
-          		});
-        	}
-      	}
-    });
+	});
 	return User;
 };
