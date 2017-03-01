@@ -29,7 +29,7 @@ module.exports = function(app) {
               console.log("data is null");
               // creates a user in our DB if not one yet, then returns it
                 db.User.create({
-                    email: data.dataValues.email
+                    email: req.body.email
                 }).then((data) => {
                     res.json(data.dataValues);
                 })

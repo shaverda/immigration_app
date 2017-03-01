@@ -3,7 +3,13 @@ var AUTH0_DOMAIN = 'shaverda.auth0.com';
 var AUTH0_CALLBACK_URL = location.href;
 
 window.addEventListener('load', function() {
-    var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
+
+    var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
+        theme: {
+            logo: "../earth.png"
+        }
+    });
+
 
     // // { for if i decide to go with additional sign up fields rather than doing all thru google in combo with our own users db!
     //   additionalSignUpFields: [{
