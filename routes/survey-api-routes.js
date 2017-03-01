@@ -39,5 +39,6 @@ module.exports = function(app) {
 
     app.post("/survey", (req, res) => {
         console.log(req.body);
+        res.json(req.body);
     })
 };
