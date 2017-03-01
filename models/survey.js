@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		city: {
 			type: DataTypes.STRING,
-			allowNull: state
+			allowNull: false
 		},
 		zip: {
 			type: DataTypes.STRING,
