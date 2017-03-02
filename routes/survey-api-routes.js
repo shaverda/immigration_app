@@ -38,11 +38,7 @@ module.exports = function(app) {
 
     app.post("/survey", (req, res) => {
         console.log(req.body);
-        // console.log(req.body['Family/last name:']);
-        //TODO; HAVING DIFFICULTY HERE GETTING TO DELVE INTO OBJECTS
-        //console.log(req.body.'Family/last name:');
         db.Survey.create({
-            // email: JSON.parse(localStorage.getItem('profile')).email,
             email: req.body.email,
             last_name: req.body['Family/last name:'],
             first_name: req.body['Given/first name:'],
@@ -62,7 +58,15 @@ module.exports = function(app) {
             status_expires_on: req.body['USCIS state expires on']
         }).then((data) => {
             console.log("finished passing survey data to mysql");
-        })
+            db.User.update({
+                completedSurvey: true
+            }, {
+                where: {
+                    email: req.body.email
+                }
+            })
+        });
         res.json(req.body);
     })
 };
+
