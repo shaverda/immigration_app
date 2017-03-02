@@ -12,7 +12,7 @@ module.exports = function(app) {
     });
 
 
- 
+
     app.post("/user", function(req, res) {
         console.log(req.body);
         db.User.findOne({
@@ -24,10 +24,9 @@ module.exports = function(app) {
             //console.log(data.dataValues);
             if (data != null) {
                 res.json(data.dataValues);
-            }
-            else {  //if data DOES equal null, create user
-              console.log("data is null");
-              // creates a user in our DB if not one yet, then returns it
+            } else { //if data DOES equal null, create user
+                console.log("data is null");
+                // creates a user in our DB if not one yet, then returns it
                 db.User.create({
                     email: req.body.email
                 }).then((data) => {
@@ -39,15 +38,31 @@ module.exports = function(app) {
 
     app.post("/survey", (req, res) => {
         console.log(req.body);
-        console.log(req.body['Family/last name:']);
+        // console.log(req.body['Family/last name:']);
         //TODO; HAVING DIFFICULTY HERE GETTING TO DELVE INTO OBJECTS
         //console.log(req.body.'Family/last name:');
-        // db.Survey.create({
-        //     email: localStorage.getItem('profile.email'),
-        //     last_name: 
-        // }).then((data) => {
-            
-        // })
+        db.Survey.create({
+            // email: JSON.parse(localStorage.getItem('profile')).email,
+            email: req.body.email,
+            last_name: req.body['Family/last name:'],
+            first_name: req.body['Given/first name:'],
+            middle_name: req.body['Middle name:'],
+            address: req.body['Address'],
+            apt_no: req.body['Apartment #'],
+            city: req.body.City,
+            zip: req.body['Zip Code'],
+            date_of_birth: req.body['Date of birth'],
+            country_of_birth: req.body['Country of Birth'],
+            country_of_citizenship: req.body['Country of Citizenship'],
+            social_security_num: req.body['Social security number, if you have one'],
+            a_number: req.body['A-Number'],
+            date_of_last_arrival: req.body['Date of last arrival'],
+            i94_arrival_departure_record_number: req.body['I-94 Arrival-Departure Record Number'],
+            current_uscis_status: req.body['Current USCIS Status'],
+            status_expires_on: req.body['USCIS state expires on']
+        }).then((data) => {
+            console.log("finished passing survey data to mysql");
+        })
         res.json(req.body);
     })
 };
