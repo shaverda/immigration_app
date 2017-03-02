@@ -15,7 +15,8 @@ function sendDataToServer(survey) {
         data: survey_data,
         contentType: "application/json",
         complete: function(data) {
-        	console.log("posting complete on survey.js front end");
+        	console.log("posting complete, returned to front end");
+            setTimeout(function() { window.location.href = "/document"; }, 4000);
     	}
 });	
 
