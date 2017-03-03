@@ -1,16 +1,29 @@
 var db = require("../models");
+const sequelize = require("../models").sequelize;
 
 module.exports = function(app) {
     app.get("/api/surveyList", function(req, res) {
-        // 1. Add a join to include all of each Author's Posts
-        db.Survey.findAll({
-            include: [db.User]
-        }).then(function(response) {
-            res.json(response);
-            console.log(response);
+        db.User.findAll({
+            where: {
+                completedSurvey: true
+            },
+            order: [['updatedAt', 'ASC']]
+        }).then(function(data) {
+            res.json(data);
         });
     });
 
+    app.post("/api/individual_survey", function(req, res) {
+        console.log(req.body);
+        db.Survey.findOne({
+            where: {
+                email: req.body.email
+            }
+        }).then((data) => {
+            res.json(data);
+        })
+
+    })
 
 
     app.post("/user", function(req, res) {

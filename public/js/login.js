@@ -67,8 +67,7 @@ window.addEventListener('load', function() {
         var user_info = ({
                 email: profile.email
             })
-            //takes user email to post to page to 
-            //attach to our own db metadatha
+
         $.post("/user", user_info).then((data) => {
             console.log(data);
             if (data.userType == "immigrant") {
