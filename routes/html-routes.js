@@ -22,6 +22,10 @@ module.exports = function(app) {
     res.render('login');
   });
 
+  app.get('/photoIdentification', function(req,res){
+    res.render('photoID');
+  });
+
   //lawyers are sent to an list of surveys filled out forms
   app.get("/surveyList", function(req, res) {
     app.engine('handlebars', exphbs({ defaultLayout: 'lawyer'}))
