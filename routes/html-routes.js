@@ -26,7 +26,7 @@ module.exports = function(app) {
   app.get("/surveyList", function(req, res) {
     app.engine('handlebars', exphbs({ defaultLayout: 'lawyer'}))
     app.set("view engine", "handlebars");
-    res.render('surveyList', {});
+    res.render('surveyList');
   });
 
   //users are sent to their survey
@@ -38,4 +38,11 @@ module.exports = function(app) {
   app.get("/document", function(req, res){
     res.render('document');
   });
+
+  app.post("/show_survey", function(req, res) {
+    console.log(req.body);
+    res.render("show_survey", req.body);
+
+      //TODO: GET ABOVE TO ACTUALLY SHOW SURVEY PAGE
+  })
 };
