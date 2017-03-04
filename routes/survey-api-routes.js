@@ -22,9 +22,17 @@ module.exports = function(app) {
         }).then((data) => {
             res.json(data);
         })
-
     })
 
+    app.get("/api/individual_survey/:email", (req, res) => {
+        db.Survey.findOne({
+            where: {
+                email: req.params.email
+            }
+        }).then((data) => {
+            res.json(data);
+        })
+    })
 
     app.post("/user", function(req, res) {
         console.log(req.body);
@@ -81,5 +89,6 @@ module.exports = function(app) {
         });
         res.json(req.body);
     })
+    
 };
 
