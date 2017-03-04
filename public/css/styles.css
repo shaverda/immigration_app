@@ -4,26 +4,23 @@ img{
 	width: 200px;
 	padding: 4px;
 }
-<<<<<<< HEAD
-/* Full height image header */
-.bgimg-1 {
-    background-position: left;
-    background-size: cover;
-    background-image: url("http://eskipaper.com/images/patriotic-wallpaper-2.jpg");
-    min-height: 100%;
-}
-=======
->>>>>>> 62893a5488fa9e79aebbfe17ee06ab5cad0a4b2d
 body{
-	background-color: #7FDBFF;
-	background-image: url("https://jcsla.files.wordpress.com/2013/04/faded_flag.gif") 0 0 no repeat;
+	background-size: cover;
+	background-image: url("https://jcsla.files.wordpress.com/2013/04/faded_flag.gif"); 
+	min-height: 100%;
 }
 p{
 	color: black;
-	font-family: 'Cinzel Decorative';
-	font-size: 16px;
-<<<<<<< HEAD
+	font-family: 'Lobster', cursive;
+	font-size: 20px;
+	float: left;
 	display: inline-block;
-=======
->>>>>>> 62893a5488fa9e79aebbfe17ee06ab5cad0a4b2d
+	position: relative;
+}
+button{
+	float: initial;
+}
+h4{
+	font-family: 'Lobster', cursive;
+	position: absolute;
 }

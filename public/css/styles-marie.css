@@ -12,13 +12,25 @@ img{
     min-height: 100%;
 }
 body{
-	background-color: #7FDBFF;
-	background-image: url("https://jcsla.files.wordpress.com/2013/04/faded_flag.gif") 0 0 no repeat;
+	/*background-image: url("https://jcsla.files.wordpress.com/2013/04/faded_flag.gif") 0 0 no repeat;*/
+	background-size: cover;
+	background-image: url("https://jcsla.files.wordpress.com/2013/04/faded_flag.gif"); 
+	min-height: 100%;
 }
 p{
 	color: black;
-	font-family: 'Cinzel Decorative';
-	font-size: 16px;
+	/*font-family: 'Cinzel Decorative';*/
+	font-family: 'Lobster', cursive;
+	font-size: 20px;
+	float: left;
 	/*background-color: white;*/
 	display: inline-block;
+	position: relative;
+}
+button{
+	float: initial;
+}
+h4{
+	font-family: 'Lobster', cursive;
+	position: absolute;
 }
