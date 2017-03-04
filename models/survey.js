@@ -31,10 +31,13 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
+<<<<<<< HEAD
 		city: {
 			type: DataTypes.STRING,
 			allowNull: false 
 		},
+=======
+>>>>>>> 904e3d9adc85e8db5f7c7be7575cd59a4f268eb0
 		zip: {
 			type: DataTypes.STRING,
 			allowNull: false
