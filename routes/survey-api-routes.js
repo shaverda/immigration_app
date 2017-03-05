@@ -1,4 +1,7 @@
 var db = require("../models");
+var Dropbox = require('dropbox');
+
+var dbx = new Dropbox({ accessToken: 'pff8kkoCF38AAAAAAAAAgpwfq-Zz9doAajE5khZmSJ7_jLkl146U1_stQ8dzSP2z' });
 
 module.exports = function(app) {
     app.get("/api/surveyList", function(req, res) {
@@ -68,5 +71,13 @@ module.exports = function(app) {
         });
         res.json(req.body);
     })
+
+    app.post('/api/uploadImage', function(req, res){
+        dbx.filesListFolder({path: req.body}).then(function(response) {
+            console.log(response);
+        }).catch(function(error) {
+            console.log(error);
+        });
+    });
 };
 

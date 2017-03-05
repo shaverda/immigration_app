@@ -7,6 +7,22 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require('express-handlebars');
+var rewrite = require('express-urlrewrite');
+var fs = require('fs');
+var path = require('path');
+var webpack = require('webpack');
+var webpackConfig = require('./webpack-umd.config');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+
+app.use(webpackDevMiddleware(webpack(webpackConfig), {
+  publicPath: '/__build__/'
+}));
+
+fs.readdirSync(__dirname).forEach(function (file) {
+  if (fs.statSync(path.join(__dirname, file)).isDirectory()) {
+    app.use(rewrite('/' + file + '/*', '/' + file + '/index.html'));
+  }
+});
 
 // Sets up the Express App
 // =============================================================

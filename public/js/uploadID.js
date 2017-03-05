@@ -1,65 +1,32 @@
-var request = require('superagent');
-var Promise = require('es6-promise').Promise;
-var getBaseURL = require('./get-base-url');
-var httpHeaderSafeJson = require('./http-header-safe-json');
+// dbx.filesListFolder({path: ''})
+//   .then(function(response) {
+//     console.log(response);
+//   })
+//   .catch(function(error) {
+//     console.log(error);
+//   });
 
-// This doesn't match what was spec'd in paper doc yet
-var buildCustomError = function (error, response) {
-  return {
-    status: error.status,
-    error: (response ? response.text : null) || error.toString(),
-    response: response
-  };
-};
 
-var uploadRequest = function (path, args, auth, host, accessToken, selectUser) {
-  if (auth !== 'user') {
-    throw new Error('Unexpected auth type: ' + auth);
-  }
 
-  var promiseFunction = function (resolve, reject) {
-    var apiRequest;
+$('.btn').on('click', function(){
+  var image = $('.file-upload');
+  $.post('/api/uploadImage', image);
+});
 
-    // Since args.contents is sent as the body of the request and not added to
-    // the url, it needs to be remove it from args.
-    var contents = args.contents;
-    delete args.contents;
 
-    function success(data) {
-      if (resolve) {
-        resolve(data);
-      }
-    }
 
-    function failure(error) {
-      if (reject) {
-        reject(error);
-      }
-    }
-
-    function responseHandler(error, response) {
-      if (error) {
-        failure(buildCustomError(error, response));
-      } else {
-        success(response.body);
-      }
-    }
-
-    apiRequest = request.post(getBaseURL(host) + path)
-      .type('application/octet-stream')
-      .set('Authorization', 'Bearer ' + accessToken)
-      .set('Dropbox-API-Arg', httpHeaderSafeJson(args));
-
-    if (selectUser) {
-      apiRequest = apiRequest.set('Dropbox-API-Select-User', selectUser);
-    }
-
-    apiRequest
-      .send(contents)
-      .end(responseHandler);
-  };
-
-  return new Promise(promiseFunction);
-};
-
-module.exports = uploadRequest;
+// function uploadFile() {
+//       var dbx = new Dropbox({ accessToken: 'pff8kkoCF38AAAAAAAAAe3XFDkqzsZ94EWizYFi7KUfLJhAeD-kTE1gaKEndh_UU' });
+//       var fileInput = document.getElementById('file-upload');
+//       var file = fileInput.files[0];
+//       dbx.filesUpload({path: '/' + file.name, contents: file})
+//         .then(function(response) {
+//           var results = document.getElementById('results');
+//           results.appendChild(document.createTextNode('File uploaded!'));
+//           console.log(response);
+//         })
+//         .catch(function(error) {
+//           console.error(error);
+//         });
+//       return false;
+//     }
