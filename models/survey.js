@@ -7,17 +7,69 @@ module.exports = function(sequelize, DataTypes) {
 				isEmail: true
 			}
 		},
-		question1: {
+		last_name: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		first_name: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		middle_name: {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
-		question2: {
+		address: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		apt_no: {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
-		question3: {
+		city: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		zip: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		date_of_birth: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		country_of_birth: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		country_of_citizenship: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		social_security_num: {
 			type: DataTypes.STRING,
 			allowNull: true
+		},
+		a_number: {
+			type: DataTypes.STRING,
+			allowNull: true
+		},
+		date_of_last_arrival: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		i94_arrival_departure_record_number: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		current_uscis_status: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		status_expires_on: {
+			type: DataTypes.STRING,
+			allowNull: false
 		}
 	},
 

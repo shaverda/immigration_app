@@ -6,17 +6,13 @@
 // =============================================================
 var path = require("path");
 var exphbs = require("express-handlebars");
-var api = require("./survey-api-routes");
 
 // Routes
 // =============================================================
 module.exports = function(app) {
-
-  //0 user, 1 laywer, 2 test
   
 
   app.engine('handlebars', exphbs({ defaultLayout: 'user' }));
-  console.log('user');
   app.set("view engine", "handlebars");
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
@@ -30,7 +26,7 @@ module.exports = function(app) {
   app.get("/surveyList", function(req, res) {
     app.engine('handlebars', exphbs({ defaultLayout: 'lawyer'}))
     app.set("view engine", "handlebars");
-    res.render('surveyList', {});
+    res.render('surveyList');
   });
 
   //users are sent to their survey
@@ -42,4 +38,11 @@ module.exports = function(app) {
   app.get("/document", function(req, res){
     res.render('document');
   });
+
+  app.post("/show_survey", function(req, res) {
+    console.log(req.body);
+    res.render("show_survey", req.body);
+
+      //TODO: GET ABOVE TO ACTUALLY SHOW SURVEY PAGE
+  })
 };
