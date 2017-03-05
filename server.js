@@ -9,6 +9,10 @@ var bodyParser = require("body-parser");
 var exphbs = require('express-handlebars');
 var AWS = require('aws-sdk');
 
+AWS.config.loadFromPath('config/awsconfig.json');
+
+s3 = new AWS.S3({apiVersion: '2006-03-01'});
+
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -20,8 +24,6 @@ app.set("view engine", "handlebars");
 
 // Requiring our models for syncing
 var db = require("./models");
-
-
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());

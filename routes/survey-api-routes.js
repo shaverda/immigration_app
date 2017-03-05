@@ -1,4 +1,7 @@
 var db = require("../models");
+var fs = require('fs');
+var path = require('path');
+
 const sequelize = require("../models").sequelize;
 
 module.exports = function(app) {
@@ -80,6 +83,29 @@ module.exports = function(app) {
             })
         });
         res.json(req.body);
+    })
+
+    app.post('/api/uploadImage', (req,res) => {
+        console.log(req.body.url);
+        var uploadParams = {Bucket: 'immigrationportalphotoid', Key: '', Body: ''};
+        var file = req.body.url;
+
+        var fileStream = fs.createReadStream(file);
+        fileStream.on('error', function(err) {
+            console.log('File Error', err);
+        });
+
+        uploadParams.Body = fileStream;
+
+        uploadParams.Key = path.basename(file);
+
+        s3.upload (uploadParams, function (err, data) {
+            if (err) {
+                console.log("Error", err);
+            } if (data) {
+                console.log("Upload Success", data.Location);
+            }
+        });
     })
 };
 
