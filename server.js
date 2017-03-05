@@ -7,6 +7,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require('express-handlebars');
+var AWS = require('aws-sdk');
 
 // Sets up the Express App
 // =============================================================
@@ -19,7 +20,7 @@ app.set("view engine", "handlebars");
 
 // Requiring our models for syncing
 var db = require("./models");
-// var firebase = require('./firebase');
+
 
 
 // Sets up the Express app to handle data parsing

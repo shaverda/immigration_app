@@ -39,6 +39,10 @@ module.exports = function(app) {
     res.render('document');
   });
 
+  app.get("/uploadImage", function(req, res){
+    res.render('uploadImage');
+  });
+
   app.post("/show_survey", function(req, res) {
     console.log(req.body);
     res.render("show_survey", req.body);
