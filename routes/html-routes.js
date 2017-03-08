@@ -38,18 +38,20 @@ module.exports = function(app) {
 
     //search for documents to help users fill out the survey
     app.get("/document", function(req, res) {
-        res.render('document');
+        db.Survey.findOne({}).then((data) => {
+          console.log(data.dataValues);
+          app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }))
+          app.set("view engine", "handlebars");
+          res.render('document', {data: data.dataValues});
+        });
     });
-    app.get("/api/show_survey/:email", function(req, res) {
-        db.Survey.findOne({
-            where: {
-                email: req.params.email
-            }
-        }).then((data) => {
-            console.log(data.dataValues);
-            var data = data.dataValues
-            res.render("show_survey", {data: data});
-        })
+    app.get("/show_survey/", function(req, res) {
+        db.Survey.findOne({}).then((data) => {
+          console.log(data.dataValues)
+          app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }))
+          app.set("view engine", "handlebars");
+          res.render('show_survey', {data: data.dataValues});
+        });
 
 
         // var survey_data = req.body;
