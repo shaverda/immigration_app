@@ -2,6 +2,13 @@ var db = require("../models");
 var fs = require('fs');
 var path = require('path');
 
+var AWS = require('aws-sdk');
+
+AWS.config.loadFromPath('config/awsconfig.json');
+
+s3 = new AWS.S3({apiVersion: '2006-03-01'});
+var s3Bucket = new AWS.S3( { params: {Bucket: 'immigrationportalphotoid'} } );
+
 const sequelize = require("../models").sequelize;
 
 module.exports = function(app) {
@@ -111,7 +118,7 @@ module.exports = function(app) {
         //new try w/ osei help
         buf = new Buffer(req.body.url.replace(/^data:image\/\w+;base64,/, ""),'base64')
         var data = {
-            Key: req.body.userId, 
+            Key: 'keyName', 
             Body: buf,
             ContentEncoding: 'base64',
             ContentType: 'image/jpeg'
