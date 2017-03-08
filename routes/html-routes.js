@@ -50,7 +50,7 @@ module.exports = function(app) {
           console.log(data.dataValues)
           app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }))
           app.set("view engine", "handlebars");
-          res.render('show_survey', {data: dataValues});
+          res.render('show_survey', {data: data.dataValues});
         });
 
 
