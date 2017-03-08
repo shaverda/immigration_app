@@ -48,6 +48,7 @@ module.exports = function(app) {
         }).then((data) => {
             console.log(data.dataValues);
             var data = data.dataValues
+            data.full_name = `${data.first_name} ${data.last_name}`;
             res.render("show_survey", {data: data});
         })
 
