@@ -86,24 +86,42 @@ module.exports = function(app) {
     })
 
     app.post('/api/uploadImage', (req,res) => {
+        // var uploadParams = {Bucket: 'immigrationportalphotoid', Key: '', Body: ''};
+        // var file = req.body;
+        // console.log(file);
+        // var fileStream = fs.createReadStream(file);
+        // fileStream.on('error', function(err) {
+        //     console.log('File Error', err);
+        // });
+
+        // uploadParams.Body = fileStream;
+
+        // uploadParams.Key = path.basename(file);
+
+        // s3.upload (uploadParams, function (err, data) {
+        //     if (err) {
+        //         console.log("Error", err);
+        //     } if (data) {
+        //         console.log("Upload Success", data.Location);
+        //     }
+        // });
+
         console.log(req.body.url);
-        var uploadParams = {Bucket: 'immigrationportalphotoid', Key: '', Body: ''};
-        var file = req.body.url;
 
-        var fileStream = fs.createReadStream(file);
-        fileStream.on('error', function(err) {
-            console.log('File Error', err);
-        });
-
-        uploadParams.Body = fileStream;
-
-        uploadParams.Key = path.basename(file);
-
-        s3.upload (uploadParams, function (err, data) {
-            if (err) {
-                console.log("Error", err);
-            } if (data) {
-                console.log("Upload Success", data.Location);
+        //new try w/ osei help
+        buf = new Buffer(req.body.url.replace(/^data:image\/\w+;base64,/, ""),'base64')
+        var data = {
+            Key: req.body.userId, 
+            Body: buf,
+            ContentEncoding: 'base64',
+            ContentType: 'image/jpeg'
+        };
+        s3Bucket.putObject(data, function(err, data){
+            if (err) { 
+                console.log(err);
+                console.log('Error uploading data: ', data); 
+            } else {
+                console.log('succesfully uploaded the image!');
             }
         });
     })

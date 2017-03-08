@@ -12,6 +12,7 @@ var AWS = require('aws-sdk');
 AWS.config.loadFromPath('config/awsconfig.json');
 
 s3 = new AWS.S3({apiVersion: '2006-03-01'});
+var s3Bucket = new AWS.S3( { params: {Bucket: 'immigrationportalphotoid'} } );
 
 // Sets up the Express App
 // =============================================================

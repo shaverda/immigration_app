@@ -30,6 +30,3 @@ $(document).ready(function() {
     };
     getPosts();
 });
-
-
-
