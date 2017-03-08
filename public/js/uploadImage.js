@@ -15,8 +15,11 @@ function readURL(input){
 		reader.onload = function (e){
 			var image = e.target.result;
 			$('#uploadedPhoto').attr('src', image);
-			var imageObj = {url:image};
-			$.post('/api/uploadImage', imageObj);
+			var data = {
+				image: image,
+				email: JSON.parse(localStorage.profile).email
+			}
+			$.post('/api/uploadImage', data);
 			// console.log(link);
 		}
 

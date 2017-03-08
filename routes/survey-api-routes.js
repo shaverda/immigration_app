@@ -102,7 +102,6 @@ module.exports = function(app) {
 
     app.post('/api/uploadImage', (req,res) => {
 
-        db.User.findAll({where: {}})
         // var uploadParams = {Bucket: 'immigrationportalphotoid', Key: '', Body: ''};
         // var file = req.body;
         // console.log(file);
@@ -123,14 +122,10 @@ module.exports = function(app) {
         //     }
         // });
 
-
-
-        console.log(req.body.url);
-
         //new try w/ osei help
-        buf = new Buffer(req.body.url.replace(/^data:image\/\w+;base64,/, ""),'base64')
+        buf = new Buffer(req.body.image.replace(/^data:image\/\w+;base64,/, ""),'base64')
         var data = {
-            Key: 'keyName', 
+            Key: req.body.email, 
             Body: buf,
             ContentEncoding: 'base64',
             ContentType: 'image/jpeg'
