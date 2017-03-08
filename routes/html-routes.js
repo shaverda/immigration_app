@@ -38,7 +38,12 @@ module.exports = function(app) {
 
     //search for documents to help users fill out the survey
     app.get("/document", function(req, res) {
-        res.render('document');
+        db.Survey.findOne({}).then((data) => {
+          console.log(data.dataValues);
+          app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }))
+          app.set("view engine", "handlebars");
+          res.render('document', {data: data.dataValues});
+        });
     });
     app.get("/api/show_survey/:email", function(req, res) {
         db.Survey.findOne({
@@ -51,18 +56,15 @@ module.exports = function(app) {
             data.full_name = `${data.first_name} ${data.last_name}`;
             res.render("show_survey", {data: data});
         })
+    app.get("/show_survey/", function(req, res) {
+        db.Survey.findOne({}).then((data) => {
+          console.log(data.dataValues)
+          app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }))
+          app.set("view engine", "handlebars");
+          res.render('show_survey', {data: data.dataValues});
+        });
 
-
-        // var survey_data = req.body;
-        // res.render("show_survey", survey_data);
-
-        //TODO: GET ABOVE TO ACTUALLY SHOW SURVEY PAGE
     })
 
-    // router.get("/", (req, res) => {
-    //     db.Burger.findAll({}).then(function(data) {
-    //         res.render("index", { burgers: data });
-    //     });
-    // });
 
 };
