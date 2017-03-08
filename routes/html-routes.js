@@ -56,6 +56,7 @@ module.exports = function(app) {
             data.full_name = `${data.first_name} ${data.last_name}`;
             res.render("show_survey", {data: data});
         })
+    });
     app.get("/show_survey/", function(req, res) {
         db.Survey.findOne({}).then((data) => {
           console.log(data.dataValues)
@@ -64,7 +65,7 @@ module.exports = function(app) {
           res.render('show_survey', {data: data.dataValues});
         });
 
-    })
+    });
 
 
 };
