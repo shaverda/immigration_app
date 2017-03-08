@@ -9,24 +9,12 @@ $(document).ready(function() {
 
     function initializeRows(list) {
         for (var i = 0; i < list.length; i++) {
-            $('.list').append(`<button type="button" class="btn btn-secondary">${list[i].email}</button>`);
+            var query_url = "/api/show_survey/" + list[i].email;
+            var html = `<tr onclick="document.location = '${query_url}';"><th scope="row">${i+1}</th><td>first name</td><td> last name </td><td>${list[i].email}</td></tr>`
+            $('tbody').append(html);
         };
-        $('button').click(function() {
-            var data = {email: this.textContent}
-            data = JSON.stringify(data);
-            $.ajax({
-                url: "/api/individual_survey",
-                type: "POST",
-                data: data,
-                contentType: "application/json",
-                complete: function(data) {
-                    console.log("posting complete, returned to front end");
-                    var data = JSON.parse(data.responseText);
-                    console.log(data);
-                    $.post("/show_survey", data);
-                }
-            });
-        })
+
     };
     getPosts();
+
 });

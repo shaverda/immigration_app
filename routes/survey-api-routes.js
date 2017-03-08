@@ -32,9 +32,17 @@ module.exports = function(app) {
         }).then((data) => {
             res.json(data);
         })
-
     })
 
+    app.get("/api/individual_survey/:email", (req, res) => {
+        db.Survey.findOne({
+            where: {
+                email: req.params.email
+            }
+        }).then((data) => {
+            res.json(data);
+        })
+    })
 
     app.post("/user", function(req, res) {
         console.log(req.body);
@@ -93,6 +101,8 @@ module.exports = function(app) {
     })
 
     app.post('/api/uploadImage', (req,res) => {
+
+        db.User.findAll({where: {}})
         // var uploadParams = {Bucket: 'immigrationportalphotoid', Key: '', Body: ''};
         // var file = req.body;
         // console.log(file);
@@ -112,6 +122,8 @@ module.exports = function(app) {
         //         console.log("Upload Success", data.Location);
         //     }
         // });
+
+
 
         console.log(req.body.url);
 
@@ -133,4 +145,3 @@ module.exports = function(app) {
         });
     })
 };
-

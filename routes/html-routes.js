@@ -6,38 +6,57 @@
 // =============================================================
 var path = require("path");
 var exphbs = require("express-handlebars");
+var db = require("../models");
+const sequelize = require("../models").sequelize;
 
 // Routes
 // =============================================================
 module.exports = function(app) {
-  
 
-  app.engine('handlebars', exphbs({ defaultLayout: 'user' }));
-  app.set("view engine", "handlebars");
 
-  // Each of the below routes just handles the HTML page that the user gets sent to.
-
-  //start users at the login page
-  app.get("/", function(req, res) {
-    res.render('login');
-  });
-
-  //lawyers are sent to an list of surveys filled out forms
-  app.get("/surveyList", function(req, res) {
-    app.engine('handlebars', exphbs({ defaultLayout: 'lawyer'}))
+    app.engine('handlebars', exphbs({ defaultLayout: 'user' }));
     app.set("view engine", "handlebars");
-    res.render('surveyList');
-  });
 
-  //users are sent to their survey
-  app.get("/survey", function(req, res) {
-    res.render('survey');
-  });
+    // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  //search for documents to help users fill out the survey
-  app.get("/document", function(req, res){
-    res.render('document');
-  });
+    //start users at the login page
+    app.get("/", function(req, res) {
+        res.render('login');
+    });
+
+    //lawyers are sent to an list of surveys filled out forms
+    app.get("/surveyList", function(req, res) {
+        app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }))
+        app.set("view engine", "handlebars");
+        res.render('surveyList');
+    });
+
+    //users are sent to their survey
+    app.get("/survey", function(req, res) {
+        res.render('survey');
+    });
+
+    //search for documents to help users fill out the survey
+    app.get("/document", function(req, res) {
+        res.render('document');
+    });
+    app.get("/api/show_survey/:email", function(req, res) {
+        db.Survey.findOne({
+            where: {
+                email: req.params.email
+            }
+        }).then((data) => {
+            console.log(data.dataValues);
+            var data = data.dataValues
+            res.render("show_survey", {data: data});
+        })
+
+
+        // var survey_data = req.body;
+        // res.render("show_survey", survey_data);
+
+        //TODO: GET ABOVE TO ACTUALLY SHOW SURVEY PAGE
+    })
 
   app.get("/uploadImage", function(req, res){
     res.render('uploadImage');
@@ -46,7 +65,10 @@ module.exports = function(app) {
   app.post("/show_survey", function(req, res) {
     console.log(req.body);
     res.render("show_survey", req.body);
+    // router.get("/", (req, res) => {
+    //     db.Burger.findAll({}).then(function(data) {
+    //         res.render("index", { burgers: data });
+    //     });
+    });
 
-      //TODO: GET ABOVE TO ACTUALLY SHOW SURVEY PAGE
-  })
 };
