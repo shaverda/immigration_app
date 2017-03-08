@@ -6,7 +6,8 @@ window.addEventListener('load', function() {
 
     var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
         theme: {
-            logo: "../earth.png"
+            // logo: "../earth.png"
+            logo: "./survey-jquery/earth.png"
         }
     });
 
