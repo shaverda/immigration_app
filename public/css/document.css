@@ -1,0 +1,13 @@
+body{
+	background-size: cover;
+	background-image: url("http://bsnscb.com/data/out/87/39364759-global-wallpapers.jpg"); 
+	min-height: 100%;
+}
+p{
+	color: black;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 20px;
+	float: left;
+	display: inline-block;
+	position: relative;
+}
