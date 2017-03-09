@@ -100,6 +100,17 @@ module.exports = function(app) {
         res.json(req.body);
     })
 
+    app.post('/api/findImage', (req,res)=> {
+        var params = {
+            Bucket: 'immigrationportalphotoid', /* required */
+            Key: req.body.email, /* required */
+        };
+        s3.getObject(params, function(err, data) {
+            if (err) console.log(err, err.stack); // an error occurred
+            else     console.log(data);           // successful response
+        });
+    })
+
     app.post('/api/uploadImage', (req,res) => {
 
         // var uploadParams = {Bucket: 'immigrationportalphotoid', Key: '', Body: ''};
