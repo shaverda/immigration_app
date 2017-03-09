@@ -38,10 +38,12 @@ $("#display_pdf").click(function() {
   $("#canvas").css("display", "");
   $(this).css("display", "none");
   $("#hide_pdf").css("display", "");
+  $("#documentInfoContainer").hide();
 });
 
 $("#hide_pdf").click(function() {
   $("#canvas").css("display", "none");
   $(this).css("display", "none");
   $("#display_pdf").css("display", "");
+  $("#documentInfoContainer").show();
 })

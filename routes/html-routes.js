@@ -46,6 +46,8 @@ module.exports = function(app) {
         });
     });
     app.get("/api/show_survey/:email", function(req, res) {
+        console.log(req.params);
+        console.log("above is consle log for req.body in line 49.");
         db.Survey.findOne({
             where: {
                 email: req.params.email
@@ -57,15 +59,15 @@ module.exports = function(app) {
             res.render("show_survey", {data: data});
         })
     });
-    app.get("/show_survey/", function(req, res) {
-        db.Survey.findOne({}).then((data) => {
-          console.log(data.dataValues)
-          app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }))
-          app.set("view engine", "handlebars");
-          res.render('show_survey', {data: data.dataValues});
-        });
+    // app.get("/show_survey/", function(req, res) {
+    //     db.Survey.findOne({}).then((data) => {
+    //       console.log(data.dataValues)
+    //       app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }))
+    //       app.set("view engine", "handlebars");
+    //       res.render('show_survey', {data: data.dataValues});
+    //     });
 
-    });
+    // }); i don't think this is used but i am too scared to delete it.
 
 
 };
