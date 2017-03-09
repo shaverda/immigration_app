@@ -27,8 +27,8 @@ p{
 
 #login {
 	left: 50%;
-	padding-left: 40%;
-	padding-right: 40%;
+	padding-left: 41%;
+	padding-right: 41%;
 }
 #btn-login{
 	background-color: #777;
@@ -46,4 +46,16 @@ p{
 #unreviwed-survey-text {
 	padding-left: 8%;
 	padding-right: 8%;
+}
+.table-header-bold {
+	font-weight: 600;
+}
+#div-for-pdf-buttons {
+	margin-left: 20%;
+	display:flex;
+	width: 50%;
+	justify-content: space-around;
+}
+.pdf-buttons {
+	margin-top: 30px;
 }

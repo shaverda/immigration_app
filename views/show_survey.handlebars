@@ -2,73 +2,75 @@
 <div class="container" id="documentInfoContainer">
 	<table>
 		<tr>
-			<td>User ID: </td>
+			<td class="table-header-bold">User ID: </td>
 			<td id="id">{{data.id}}</td>
 		</tr>
 		<tr>
-			<td>First Name: </td>
+			<td class="table-header-bold">First Name: </td>
 			<td id="first_name">{{data.first_name}}</td>
 		</tr>
 		<tr>
-			<td>Last Name: </td>
+			<td class="table-header-bold">Last Name: </td>
 			<td id="last_name">{{data.last_name}}</td>
 		</tr>
 		<tr>
-			<td>Address: </td>
+			<td class="table-header-bold">Address: </td>
 			<td>{{data.address}}</td>
 		</tr>
 		<tr>
-			<td>Apparmtent No.: </td>
+			<td class="table-header-bold">Apparmtent No.: </td>
 			<td>{{data.apt_no}}</td>
 		</tr>
 		<tr>
-			<td>City: </td>
+			<td class="table-header-bold">City: </td>
 			<td>{{data.city}}</td>
 		</tr>
 		<tr>
-			<td>ZIP Code: </td>
+			<td class="table-header-bold">ZIP Code: </td>
 			<td>{{data.zip}}</td>
 		</tr>
 		<tr>
-			<td>Date of birth:</td>
+			<td class="table-header-bold">Date of birth:</td>
 			<td>{{data.date_of_birth}}</td>
 		</tr>
 		<tr>
-			<td>Country of Birth:</td>
+			<td class="table-header-bold">Country of Birth:</td>
 			<td>{{data.country_of_birth}}</td>
 		</tr>		
 		<tr>
-			<td>Citizenship:</td>
+			<td class="table-header-bold">Citizenship:</td>
 			<td>{{data.country_of_citizenship}}</td>
 		</tr>
 		<tr>
-			<td>Social Security Number:</td>
+			<td class="table-header-bold">Social Security Number:</td>
 			<td>{{data.social_security_num}}</td>
 		</tr>
 
 		<tr>
-			<td>A-Number: </td>
+			<td class="table-header-bold">A-Number: </td>
 			<td>{{data.a_number}}</td>
 		</tr>
 		<tr>
-			<td>Date of last arrival: </td>
+			<td class="table-header-bold">Date of last arrival: </td>
 			<td>{{data.date_of_last_arrival}}</td>
 		</tr>
 		<tr>
-			<td>i94 Number:</td>
+			<td class="table-header-bold">i94 Number:</td>
 			<td>{{data.i94_arrival_departure_record_number}}</td>
 		</tr><tr>
-			<td>Current USCIS Status: </td>
+			<td class="table-header-bold">Current USCIS Status: </td>
 			<td>{{data.current_uscis_status}}</td>
 		</tr><tr>
-			<td>Status Expires:</td>
+			<td class="table-header-bold">Status Expires:</td>
 			<td>{{data.status_expires_on}}</td>
 		</tr>
 	</table>
 </div>
-<button id="download">download the pdf</button>
-<button id="display_pdf">show me the pdf</button>
-<button id="hide_pdf" style="display:none">hide the pdf</button>
+<div id="div-for-pdf-buttons">
+	<button id="download" class="pdf-buttons">download the pdf</button>
+	<button id="display_pdf" class="pdf-buttons">show me the pdf</button>
+	<button id="hide_pdf" class="pdf-buttons" style="display:none">hide the pdf</button>
+</div>
 
 <canvas id="canvas" width="750" height="975" style="display:none"></canvas>
     <style type="text/css">
