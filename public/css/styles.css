@@ -1,4 +1,4 @@
-img{
+/*img{
 	margin: 50px 300px 100px 300px;
 	height: 200px;
 	width: 200px;
@@ -12,4 +12,38 @@ p{
 	color: black;
 	font-family: 'Cinzel Decorative';
 	font-size: 16px;
+}*/
+
+#btn-logout {
+	margin-top: 9px;
+	color: #777;
+	font-size: 0.9em;
+}
+
+#home_blurb_text {
+	padding-left: 8%;
+	padding-right: 8%;
+}
+
+#login {
+	left: 50%;
+	padding-left: 40%;
+	padding-right: 40%;
+}
+#btn-login{
+	background-color: #777;
+	margin-left: 18%;
+}
+
+#documentInfoContainer {
+	padding-left: 8%;
+	padding-right: 8%;
+}
+#surveyList-table {
+	margin-left: 6%;
+	margin-right: 6%;
+}
+#unreviwed-survey-text {
+	padding-left: 8%;
+	padding-right: 8%;
 }
