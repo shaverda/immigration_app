@@ -10,17 +10,6 @@ window.addEventListener('load', function() {
         }
     });
 
-
-    // // { for if i decide to go with additional sign up fields rather than doing all thru google in combo with our own users db!
-    //   additionalSignUpFields: [{
-    //     name: "user_type",
-    //     placeholder: "Enter lawyer or user",
-    //     validator: (value) =>  {
-    //       return (value.toLowerCase() === "lawyer" || value.toLowerCase() === "user");
-    //     }
-    //   }]
-    // }
-
     document.getElementById('btn-login').addEventListener('click', function() {
         lock.show();
     });
@@ -54,16 +43,6 @@ window.addEventListener('load', function() {
     };
 
     var showUserProfile = function(profile) {
-        // $('#login').style.display = "none";
-        // $('#logged').style.display = "inline-block";
-        // $('#avatar').src = profile.picture;
-        // $('#name').textContent = profile.name;
-        // $('#email').textContent = profile.email;
-        // $('#nickname').textContent = profile.nickname;
-        // $('#created_at').textContent = profile.created_at;
-        // $('#updated_at').textContent = profile.updated_at;
-        // $('#country').textContent = profile.country;
-
         var user_info = ({
                 email: profile.email
             })
@@ -85,3 +64,24 @@ window.addEventListener('load', function() {
 
     parseHash();
 });
+
+
+// // { for if i decide to go with additional sign up fields rather than doing all thru google in combo with our own users db!
+//   additionalSignUpFields: [{
+//     name: "user_type",
+//     placeholder: "Enter lawyer or user",
+//     validator: (value) =>  {
+//       return (value.toLowerCase() === "lawyer" || value.toLowerCase() === "user");
+//     }
+//   }]
+// }
+
+// $('#login').style.display = "none";
+// $('#logged').style.display = "inline-block";
+// $('#avatar').src = profile.picture;
+// $('#name').textContent = profile.name;
+// $('#email').textContent = profile.email;
+// $('#nickname').textContent = profile.nickname;
+// $('#created_at').textContent = profile.created_at;
+// $('#updated_at').textContent = profile.updated_at;
+// $('#country').textContent = profile.country;
