@@ -8,7 +8,7 @@ imageObj.onload = function() {
     context.fillText($("#last_name").text(), 50, 175);
     context.fillText($("#first_name").text(), 200, 175);
 };
-imageObj.src = "i485.png";
+imageObj.src = "/i485.png";
 
 
 function getMousePos(canvas, evt) {
