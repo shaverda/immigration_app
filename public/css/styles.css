@@ -32,8 +32,8 @@ p{
 }
 #btn-login, #btn-edit-surveyr{
 	background-color: #777;
-	margin-left: 18%;
-}
+/*	margin-left: 18%;
+*/}
 
 #documentInfoContainer {
 	padding-left: 8%;

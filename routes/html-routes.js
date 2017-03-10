@@ -69,7 +69,6 @@ module.exports = function(app) {
 
     // }); i don't think this is used but i am too scared to delete it.
 
-<<<<<<< HEAD
   app.get("/uploadImage", function(req, res){
     res.render('uploadImage');
   });
@@ -82,7 +81,4 @@ module.exports = function(app) {
     //         res.render("index", { burgers: data });
     //     });
     });
-=======
->>>>>>> master
-
 };
