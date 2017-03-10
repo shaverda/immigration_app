@@ -56,6 +56,7 @@ module.exports = function(app) {
             // console.log(data.dataValues);
             var data = data.dataValues
             data.full_name = `${data.first_name} ${data.last_name}`;
+            console.log(data.email);
             res.render("show_survey", {data: data});
         })
     });
