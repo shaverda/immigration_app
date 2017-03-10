@@ -9,6 +9,7 @@ function sendDataToServer(survey) {
     survey_data = JSON.stringify(survey_data);
     console.log(survey_data);
 
+    
     $.ajax({
         url: "/survey",
         type: "POST",

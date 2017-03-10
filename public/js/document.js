@@ -15,5 +15,10 @@ $(document).ready(function() {
 	   	});
 	}
 	getInfo();
+
+
+	$("#btn-edit-survey").click(function() {
+		window.location = "/survey";
+	})
 });
 
