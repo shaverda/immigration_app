@@ -48,6 +48,19 @@ imageObj.onload = function() {
     context.font = "10pt Arial";
     context.fillText($("#last_name").text(), 50, 175);
     context.fillText($("#first_name").text(), 200, 175);
+    context.fillText($("#address").text(), 50, 210);
+    context.fillText($("#apt_no").text(), 435, 211);
+    context.fillText($("#city").text(), 50, 275);
+    context.fillText($("#zip").text(), 410, 275);
+    context.fillText($("#date_of_birth").text(), 50, 310);
+    context.fillText($("#country_of_birth").text(), 280, 310);
+    context.fillText($("#country_of_citizenship").text(), 50, 345);
+    context.fillText($("#social_security_num").text(), 235, 345);
+    context.fillText($("#a_number").text(), 390, 345);
+    context.fillText($("#date_of_last_arrival").text(), 50, 380);
+    context.fillText($("#i94_arrival_departure_record_number").text(), 280, 380);
+    context.fillText($("#current_uscis_status").text(), 50, 415);
+    context.fillText($("#status_expires_on").text(), 275, 415);
 };
 imageObj.src = "/i485.png";
 
