@@ -45,21 +45,31 @@ module.exports = function(app) {
           res.render('document', {data: data.dataValues});
         });
     });
-    app.get("/show_survey/", function(req, res) {
-        db.Survey.findOne({}).then((data) => {
-          console.log(data.dataValues)
-          app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }))
-          app.set("view engine", "handlebars");
-          res.render('show_survey', {data: data.dataValues});
-        });
+    app.get("/api/show_survey", function(req, res) {
+        console.log(req.query);
+        console.log("above is console log for req.body in line 49.");
+        db.Survey.findOne({
+            where: {
+                email: req.query.email
+            }
+        }).then((data) => {
+            // console.log(data.dataValues);
+            var data = data.dataValues
+            data.full_name = `${data.first_name} ${data.last_name}`;
+            res.render("show_survey", {data: data});
+        })
+    });
+    // app.get("/show_survey/", function(req, res) {
+    //     db.Survey.findOne({}).then((data) => {
+    //       console.log(data.dataValues)
+    //       app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }))
+    //       app.set("view engine", "handlebars");
+    //       res.render('show_survey', {data: data.dataValues});
+    //     });
 
+    // }); i don't think this is used but i am too scared to delete it.
 
-        // var survey_data = req.body;
-        // res.render("show_survey", survey_data);
-
-        //TODO: GET ABOVE TO ACTUALLY SHOW SURVEY PAGE
-    })
-
+<<<<<<< HEAD
   app.get("/uploadImage", function(req, res){
     res.render('uploadImage');
   });
@@ -72,5 +82,7 @@ module.exports = function(app) {
     //         res.render("index", { burgers: data });
     //     });
     });
+=======
+>>>>>>> master
 
 };
