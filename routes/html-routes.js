@@ -45,15 +45,15 @@ module.exports = function(app) {
           res.render('document', {data: data.dataValues});
         });
     });
-    app.get("/api/show_survey/:email", function(req, res) {
-        console.log(req.params);
-        console.log("above is consle log for req.body in line 49.");
+    app.get("/api/show_survey", function(req, res) {
+        console.log(req.query);
+        console.log("above is console log for req.body in line 49.");
         db.Survey.findOne({
             where: {
-                email: req.params.email
+                email: req.query.email
             }
         }).then((data) => {
-            console.log(data.dataValues);
+            // console.log(data.dataValues);
             var data = data.dataValues
             data.full_name = `${data.first_name} ${data.last_name}`;
             res.render("show_survey", {data: data});
