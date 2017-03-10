@@ -19,7 +19,9 @@
   "homepage": "https://github.com/Shaverda/immigration_app#readme",
   "dependencies": {
     "auth0-lock": "^10.11.0",
+    "aws-sdk": "^2.26.0",
     "body-parser": "^1.16.1",
+    "btoa": "^1.1.2",
     "connect-ensure-login": "^0.1.1",
     "dropbox": "^2.5.2",
     "express": "^4.14.1",
