@@ -30,7 +30,7 @@ p{
 	padding-left: 41%;
 	padding-right: 41%;
 }
-#btn-login, #btn-edit-surveyr{
+#btn-login {
 	background-color: #777;
 /*	margin-left: 18%;
 */}
@@ -39,13 +39,13 @@ p{
 	padding-left: 8%;
 	padding-right: 8%;
 }
-.redo-survey-div {
+/*.redo-survey-div {
 	margin-right: auto;
 	margin-left: auto;
-}
-#btn-edit-survey {
+}*/
+/*#btn-edit-survey {
 	float: center;
-}
+}*/
 #surveyList-table {
 	margin-left: 6%;
 	margin-right: 6%;
@@ -73,7 +73,26 @@ p{
 	margin-bottom: 30px;
 }
 
-#canvas-div {
+#canvas-div, .body-div {
 	display: flex;
+	justify-content: center;
+}
+.body-div {
+	font-size: 1.2em;
+}
+
+#surveyContainer {
+	max-width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.document-next-steps {
+	display: flex;
+	justify-content: center;
+}
+
+.instructions-to-upload-id {
+		display: flex;
 	justify-content: center;
 }

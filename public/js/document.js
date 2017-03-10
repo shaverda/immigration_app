@@ -20,5 +20,9 @@ $(document).ready(function() {
 	$("#btn-edit-survey").click(function() {
 		window.location = "/survey";
 	})
+
+	$("#btn-upload-id").click(function() {
+		window.location = "/uploadImage";
+	})
 });
 
