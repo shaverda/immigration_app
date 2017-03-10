@@ -96,3 +96,5 @@ p{
 		display: flex;
 	justify-content: center;
 }
+
+tr:nth-child(odd) {background: #CCC}
