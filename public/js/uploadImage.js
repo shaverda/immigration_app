@@ -1,38 +1,49 @@
 $( document ).ready(function() {
 
-	function myCtrl($scope, $timeout) {    
-    	AWS.config.update({
-  			accessKeyId: 'AKIAIQ2BKEKDRRH2M3OA', secretAccessKey: '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'});
-    		AWS.config.region = "US Standard";
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-			var bucket = new AWS.S3({params: {Bucket: 'immigrationportalphotoid'}});
+	function isEmpty(obj) {
 
-    		bucket.getObject({Key: 'williamwgilmore@gmail.com.jpg'},function(err,file){
+    // null and undefined are "empty"
+    if (obj == null) return true;
 
-    		$timeout(function(){
-        		$scope.s3url = "data:image/jpeg;base64," + encode(file.Body);
-        		console.log($scope.s3url);
-    		},1);
-		});
+    // Assume if it has a length property with a non-zero value
+    // that that property is correct.
+    if (obj.length > 0)    return false;
+    if (obj.length === 0)  return true;
+
+    // If it isn't an object at this point
+    // it is empty, but it can't be anything *but* empty
+    // Is it empty?  Depends on your application.
+    if (typeof obj !== "object") return true;
+
+    // Otherwise, does it have any properties of its own?
+    // Note that this doesn't handle
+    // toString and valueOf enumeration bugs in IE < 9
+    for (var key in obj) {
+        if (hasOwnProperty.call(obj, key)) return false;
+    }
+
+    return true;
 	}
 
-	function encode(data)
-	{
-   		var str = data.reduce(function(a,b){ return a+String.fromCharCode(b) },'');
-    	return btoa(str).replace(/.{76}(?=.)/g,'$&\n');
-	}
 
-	myCtrl();
-
-
+	//check if the user has uploaded an image already
 	function findImage(){
-		data = {
+		key = {
 			email: JSON.parse(localStorage.profile).email
 		}
-		$.post('/api/findImage', data);
+		$.post('/api/findImage', key).then(function(data) {
+			//make sure that data is not empty
+            if (!isEmpty(data)){
+            	//put our image on the page
+            	$('#uploadedPhoto').attr('src', 'data:image/png;base64,' + data);
+            }
+        });
 	};
 
-	// findImage();
+	//run this function on page load
+	findImage();
 
 
 
@@ -47,6 +58,8 @@ $( document ).ready(function() {
 			reader.onload = function (e){
 				//encrypted url stored in base64
 				var image = e.target.result;
+				console.log(image);
+
 				//we display the image on the page
 				$('#uploadedPhoto').attr('src', image);
 				//stores the url and user's email to send to the server

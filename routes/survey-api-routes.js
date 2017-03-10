@@ -1,13 +1,23 @@
+//pull in our sequelize models
 var db = require("../models");
+//This appears to be unnecessary
 var fs = require('fs');
+//used to load the awsconfig
 var path = require('path');
+//binary data to base64-encoded asci -- we use this to convert the image we get from aws
+//into an image we can send to the js (uploadImage.js) and then display
+var btoa = require('btoa');
 
+//this section loads aws and sets up the path and bucket we use
+//-----------------------------------------------------------------------------
 var AWS = require('aws-sdk');
 
 AWS.config.loadFromPath('config/awsconfig.json');
 
 s3 = new AWS.S3({apiVersion: '2006-03-01'});
 var s3Bucket = new AWS.S3( { params: {Bucket: 'immigrationportalphotoid'} } );
+//-----------------------------------------------------------------------------
+
 
 const sequelize = require("../models").sequelize;
 
@@ -100,47 +110,51 @@ module.exports = function(app) {
         res.json(req.body);
     })
 
+
+
     app.post('/api/findImage', (req,res)=> {
+
+        //Requests require the bucket(app) we're requesting from and image name(user email)
         var params = {
-            Bucket: 'immigrationportalphotoid', /* required */
-            Key: req.body.email, /* required */
+            Bucket: 'immigrationportalphotoid',
+            Key: req.body.email, 
         };
+
+        //takes the image from the server and converts it
+        function encode(image){
+            var str = image.reduce(function(a,b){ return a+String.fromCharCode(b) },'');
+            return btoa(str).replace(/.{76}(?=.)/g,'$&\n');
+        }
+
+    
+            //send a request to aws
         s3.getObject(params, function(err, data) {
-            if (err) console.log(err, err.stack); // an error occurred
-            else     console.log(data);           // successful response
-        });
+            if (err){
+                console.log('Image does not exist')
+                res.json({});
+                return;
+            }
+                console.log('Image sent succesfully');
+
+                //send the image that was returned (data.Body) to be encoded so it can be displayed
+                var encodedImage = encode(data.Body);
+                //send the image to our javascript (uploadImage.js)
+                res.json(encodedImage);           // successful response
+            });
     })
 
     app.post('/api/uploadImage', (req,res) => {
 
-        // var uploadParams = {Bucket: 'immigrationportalphotoid', Key: '', Body: ''};
-        // var file = req.body;
-        // console.log(file);
-        // var fileStream = fs.createReadStream(file);
-        // fileStream.on('error', function(err) {
-        //     console.log('File Error', err);
-        // });
-
-        // uploadParams.Body = fileStream;
-
-        // uploadParams.Key = path.basename(file);
-
-        // s3.upload (uploadParams, function (err, data) {
-        //     if (err) {
-        //         console.log("Error", err);
-        //     } if (data) {
-        //         console.log("Upload Success", data.Location);
-        //     }
-        // });
-
-        //new try w/ osei help
+        //remove javascript helpers
         buf = new Buffer(req.body.image.replace(/^data:image\/\w+;base64,/, ""),'base64')
+        //all of the input needed for aws
         var data = {
             Key: req.body.email, 
             Body: buf,
             ContentEncoding: 'base64',
             ContentType: 'image/jpeg'
         };
+        //we're pushing to the bucket we define at the top of the page
         s3Bucket.putObject(data, function(err, data){
             if (err) { 
                 console.log(err);
