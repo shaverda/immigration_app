@@ -20,7 +20,7 @@ p{
 	font-size: 0.9em;
 }
 
-#home_blurb_text {
+#home_blurb_text, h4, h5 {
 	padding-left: 8%;
 	padding-right: 8%;
 }
@@ -30,7 +30,7 @@ p{
 	padding-left: 41%;
 	padding-right: 41%;
 }
-#btn-login{
+#btn-login, #btn-edit-surveyr{
 	background-color: #777;
 	margin-left: 18%;
 }
@@ -38,6 +38,13 @@ p{
 #documentInfoContainer {
 	padding-left: 8%;
 	padding-right: 8%;
+}
+.redo-survey-div {
+	margin-right: auto;
+	margin-left: auto;
+}
+#btn-edit-survey {
+	float: center;
 }
 #surveyList-table {
 	margin-left: 6%;
