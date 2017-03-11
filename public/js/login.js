@@ -46,7 +46,7 @@ window.addEventListener('load', function() {
 
     var showUserProfile = function(profile) {
         var user_info = ({
-                email: profile.email
+                email: JSON.parse(localStorage.getItem('profile')).email
             })
 
         $.post("/user", user_info).then((data) => {

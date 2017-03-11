@@ -13,7 +13,7 @@ const sequelize = require("../models").sequelize;
 // =============================================================
 module.exports = function(app) {
     app.engine('handlebars', exphbs({ defaultLayout: 'homeLogin' }));
-        app.set("view engine", "handlebars");
+    app.set("view engine", "handlebars");
 
     // Each of the below routes just handles the HTML page that the user gets sent to.
 
@@ -42,10 +42,7 @@ module.exports = function(app) {
     app.get("/document", function(req, res) {
         app.engine('handlebars', exphbs({ defaultLayout: 'user' }));
         app.set("view engine", "handlebars");
-        db.Survey.findOne({}).then((data) => {
-          console.log(data.dataValues);
-          res.render('document', {data: data.dataValues});
-        });
+        res.render('document');
     });
     app.get("/api/show_survey", function(req, res) {
         app.engine('handlebars', exphbs({ defaultLayout: 'lawyer' }));
@@ -61,7 +58,7 @@ module.exports = function(app) {
             var data = data.dataValues
             data.full_name = `${data.first_name} ${data.last_name}`;
             console.log(data.email);
-            res.render("show_survey", {data: data});
+            res.render("show_survey", { data: data });
         })
     });
     // app.get("/show_survey/", function(req, res) {
@@ -74,20 +71,20 @@ module.exports = function(app) {
 
     // }); i don't think this is used but i am too scared to delete it.
 
-  app.get("/uploadImage", function(req, res){
-    app.engine('handlebars', exphbs({ defaultLayout: 'user' }));
-    app.set("view engine", "handlebars");
-    res.render('uploadImage');
-  });
+    app.get("/uploadImage", function(req, res) {
+        app.engine('handlebars', exphbs({ defaultLayout: 'user' }));
+        app.set("view engine", "handlebars");
+        res.render('uploadImage');
+    });
 
-  app.post("/show_survey", function(req, res) {
-    app.engine('handlebars', exphbs({ defaultLayout: 'user' }));
-    app.set("view engine", "handlebars");
-    console.log(req.body);
-    res.render("show_survey", req.body);
-    // router.get("/", (req, res) => {
-    //     db.Burger.findAll({}).then(function(data) {
-    //         res.render("index", { burgers: data });
-    //     });
+    app.post("/show_survey", function(req, res) {
+        app.engine('handlebars', exphbs({ defaultLayout: 'user' }));
+        app.set("view engine", "handlebars");
+        console.log(req.body);
+        res.render("show_survey", req.body);
+        // router.get("/", (req, res) => {
+        //     db.Burger.findAll({}).then(function(data) {
+        //         res.render("index", { burgers: data });
+        //     });
     });
 };

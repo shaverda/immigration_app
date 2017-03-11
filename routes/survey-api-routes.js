@@ -61,8 +61,8 @@ module.exports = function(app) {
                 email: req.body.email
             }
         }).then((data) => {
-            // console.log(data);
-            //console.log(data.dataValues);
+            console.log(data);
+            console.log(data.dataValues);
             if (data != null) {
                 res.json(data.dataValues);
             } else { //if data DOES equal null, create user
