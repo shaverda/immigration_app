@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "root",
+    "password": "lolol",
+    "database": "immigration_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
