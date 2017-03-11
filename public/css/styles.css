@@ -35,9 +35,14 @@ p{
 /*	margin-left: 18%;
 */}
 
-#documentInfoContainer {
-	padding-left: 8%;
-	padding-right: 8%;
+.documentInfoContainer {
+	border-radius: 5px;
+    margin: 0px auto;
+    float: none;
+}
+
+.adjustWidth {
+	width: 27.5%;
 }
 /*.redo-survey-div {
 	margin-right: auto;
