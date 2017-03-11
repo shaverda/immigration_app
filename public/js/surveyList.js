@@ -10,7 +10,7 @@ $(document).ready(function() { //could never get async code to work, fail
     function initializeRows(list) {
         for (var i = 0; i < list.length; i++) {
             var query_url = "/api/show_survey?email=" + list[i].email;
-            var html = `<tr onclick="document.location = '${query_url}';"><th scope="row">${i+1}</th><td class="table-links" id="table-first-name">first name</td><td class="table-links" id="table-last-name"> last name </td><td class="table-links email-holder">${list[i].email}</td></tr>`
+            var html = `<tr onclick="document.location = '${query_url}';"><th scope="row">${i+1}</th><td class="table-links email-holder">${list[i].email}</td></tr>`
             $('tbody').append(html);
         };
         $("tr .email-holder").each(function(email) {
