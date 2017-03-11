@@ -4,8 +4,6 @@ var AUTH0_CALLBACK_URL = location.href;
 
 window.addEventListener('load', function() {
 
-    localStorage.clear();
-
     var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
         theme: {
             logo: "../earth.png"
